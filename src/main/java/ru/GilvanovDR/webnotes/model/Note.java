@@ -8,12 +8,16 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static java.time.LocalDateTime.*;
+import static java.time.LocalDateTime.now;
 
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "notes")
 public class Note implements HasId {
+    public Note(String subject, String text) {
+        this(null, subject, text);
+    }
+
     public String getSubject() {
         return subject;
     }
@@ -34,7 +38,7 @@ public class Note implements HasId {
     }
 
     public Note(Integer id, String subject, @NotBlank String text) {
-        this(id,subject,text,now());
+        this(id, subject, text, now());
     }
 
     public Note() {

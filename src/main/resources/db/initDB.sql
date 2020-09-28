@@ -6,6 +6,7 @@ CREATE TABLE notes
 (
     id      INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     subject VARCHAR,
-    text    VARCHAR                           NOT NULL UNIQUE,
+    text    VARCHAR                           NOT NULL,
     date    TIMESTAMP           DEFAULT now() NOT NULL
 );
+CREATE UNIQUE INDEX notes_unique_subject_text_idx ON notes (subject, text);
