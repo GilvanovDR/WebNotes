@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.GilvanovDR.webnotes.model.Note;
 import ru.GilvanovDR.webnotes.repository.NoteRepository;
+import ru.GilvanovDR.webnotes.util.exception.NotFoundException;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class  NoteService {
         return repository.getAll();
     }
 
-    public void update(Note note) {
+    public void update(Note note) throws NotFoundException {
         Assert.notNull(note, "note must not be null");
         checkNotFoundWithId(repository.save(note), note.id());
     }
