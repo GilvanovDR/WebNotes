@@ -26,7 +26,7 @@ public class NoteRepository {
             return noteRepo.save(note);
         } catch (Exception ex) {
             log.debug(ex.getMessage());
-            throw new NotFoundException("Такая заметка уже есть!");
+            throw new NotFoundException("Ошибка при добавлении заметки, возможно она уже есть!");
         }
     }
 
@@ -41,5 +41,9 @@ public class NoteRepository {
 
     public List<Note> getAll() {
         return noteRepo.getAll();
+    }
+
+    public List<Note> getFiltered(String text) {
+        return noteRepo.getFiltered(text);
     }
 }

@@ -10,8 +10,6 @@ import ru.GilvanovDR.webnotes.TimingExtension;
 import ru.GilvanovDR.webnotes.model.Note;
 import ru.GilvanovDR.webnotes.util.exception.NotFoundException;
 
-import javax.validation.ConstraintViolationException;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.GilvanovDR.webnotes.NoteTestData.*;
 import static ru.GilvanovDR.webnotes.util.ValidationUtil.getRootCause;
@@ -72,7 +70,12 @@ class NoteServiceTest {
 
     @Test
     void createWithException() throws Exception {
-        validateRootCause(() -> service.create(new Note(null, "", "")), ConstraintViolationException.class);
+        assertThrows(NotFoundException.class, () -> service.create(new Note(null, "", "")));
+    }
+
+    @Test
+    void getAllContains() {
+        NOTE_MATCHER.assertMatch(service.getFiltered("дом"), NOTES_CONTAINS);
     }
 
     public <T extends Throwable> void validateRootCause(Runnable runnable, Class<T> rootExceptionClass) {

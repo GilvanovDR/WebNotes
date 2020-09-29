@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.GilvanovDR.webnotes.model.Note;
 import ru.GilvanovDR.webnotes.service.NoteService;
 import ru.GilvanovDR.webnotes.util.exception.NotFoundException;
@@ -74,9 +75,9 @@ public class NoteUIController {
         return Integer.parseInt(paramId);
     }
 
-/*    @GetMapping("/filterBy")
-    public String getFilteredBy(@Nullable @RequestParam String emitentTitle, @RequestParam String tradeDate, Model model) {
-        model.addAttribute("history", super.getFilteredBy(emitentTitle, "".equals(tradeDate) ? null : LocalDate.parse(tradeDate)));
-        return "history";
-    }*/
+    @GetMapping("/filterBy")
+    public String getFilteredBy(@RequestParam String text, Model model) {
+        model.addAttribute("note", service.getFiltered(text));
+        return "note";
+    }
 }
