@@ -11,7 +11,7 @@ import java.util.List;
 import static ru.GilvanovDR.webnotes.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
-public class  NoteService {
+public class NoteService {
 
     private final NoteRepository repository;
 
@@ -37,7 +37,14 @@ public class  NoteService {
     }
 
     public Note create(Note note) {
+        if (note.getText().isEmpty()) {
+            throw new NotFoundException("Заметка не может быть пустой");
+        }
         Assert.notNull(note, "note must not be null");
         return repository.save(note);
+    }
+
+    public List<Note> getFiltered(String text) {
+        return repository.getFiltered(text);
     }
 }

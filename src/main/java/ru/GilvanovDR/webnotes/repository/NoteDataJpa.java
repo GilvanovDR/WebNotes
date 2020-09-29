@@ -9,7 +9,7 @@ import ru.GilvanovDR.webnotes.model.Note;
 
 import java.util.List;
 
-public interface NoteDataJpa extends JpaRepository<Note,Integer> {
+public interface NoteDataJpa extends JpaRepository<Note, Integer> {
     @Modifying
     @Transactional
     @Query("DELETE FROM Note n WHERE n.id=:id")
@@ -17,4 +17,7 @@ public interface NoteDataJpa extends JpaRepository<Note,Integer> {
 
     @Query("SELECT n FROM Note n ORDER BY n.date DESC")
     List<Note> getAll();
+
+    @Query("SELECT n FROM Note n WHERE n.subject LIKE CONCAT('%',:text,'%') OR n.text LIKE CONCAT('%',:text,'%') ORDER BY n.date DESC")
+    List<Note> getFiltered(@Param("text") String text);
 }
