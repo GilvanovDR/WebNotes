@@ -7,7 +7,7 @@
 <body>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 <div style="text-align: center;">
-    <h1>404:Cтраница не найдена</h1>
+    <h1>Что то пошло не так!</h1>
     <p>
         <img src="resources/img/hmm.png" width="889" height="582">
     </p>
