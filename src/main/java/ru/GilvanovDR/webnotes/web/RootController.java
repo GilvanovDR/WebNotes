@@ -27,7 +27,7 @@ public class RootController {
         return "index";
     }
 
-    @RequestMapping(value = "404",method = RequestMethod.GET)
+    @RequestMapping(value = "404", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public String Page404(ModelMap model) {
         log.debug("404 page not found");

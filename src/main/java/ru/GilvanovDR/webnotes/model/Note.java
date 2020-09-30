@@ -26,10 +26,6 @@ public class Note implements HasId {
         return text;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
     public Note(Integer id, String subject, @NotBlank String text, @NotNull LocalDateTime date) {
         this.id = id;
         this.subject = subject;

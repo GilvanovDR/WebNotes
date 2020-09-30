@@ -22,8 +22,11 @@ import static ru.GilvanovDR.webnotes.util.ValidationUtil.checkNew;
 @RequestMapping("/note")
 public class NoteUIController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
-    @Autowired
-    private NoteService service;
+    private final NoteService service;
+
+    public NoteUIController(NoteService service) {
+        this.service = service;
+    }
 
     @GetMapping("/delete")
     public String delete(HttpServletRequest request) {
