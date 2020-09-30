@@ -74,6 +74,6 @@ class NoteServiceTest {
 
     @Test
     void getAllContains() {
-        NOTE_MATCHER.assertMatch(service.getFiltered("дом"), NOTES_CONTAINS);
+        NOTE_MATCHER.assertMatch(service.getFiltered(CONTAINS), NOTES_CONTAINS);
     }
 }

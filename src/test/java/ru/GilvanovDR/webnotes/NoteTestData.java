@@ -24,6 +24,8 @@ public class NoteTestData {
 
     public static final List<Note> NOTES = List.of(NOTE1,NOTE2,NOTE3,NOTE4,NOTE5,NOTE6,NOTE7,NOTE8,NOTE9);
     public static final List<Note> NOTES_CONTAINS = List.of(NOTE3,NOTE4,NOTE6);
+    public static final String CONTAINS = "дом";
+
 
     public static Note getNew() {
         return new Note(null, "новая заметка", "новый текст");
